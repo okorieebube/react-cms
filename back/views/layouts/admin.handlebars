@@ -1,0 +1,24 @@
+{{> admin/admin-links}}
+
+  <body>
+  <!-- container section start -->
+  <section id="container" class="">
+     
+      
+      {{> admin/admin-header}}  
+      <!--header end-->
+
+      <!--sidebar start-->
+      {{> admin/admin-sidebar}}
+      <!--sidebar end-->
+      
+      <!--main content start-->
+      <section id="main-content">
+          {{{body}}}
+          {{> admin/footer}}
+      </section>
+      <!--main content end-->
+  </section>
+  <!-- container section start -->
+
+{{> admin/footer-links}}

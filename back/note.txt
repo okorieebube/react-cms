@@ -1,0 +1,114 @@
+﻿//STARTING DIRECTORIES
+REFER FOR FILE DIRECTORY:    https://www.sitepoint.com/create-new-express-js-apps-with-express-generator/
+EXPRESS DOCUMENTATION        https://expressjs.com/en/api.html
+VS CODE INTELLISENCE:        https://vscode.readthedocs.io/en/stable/runtimes/nodejs/
+FOR JWT:    https://medium.com/@maison.moa/using-jwt-json-web-tokens-to-authorize-users-and-protect-api-routes-3e04a1453c3e
+            https://www.sitepoint.com/using-json-web-tokens-node-js/
+
+FOR PASSPORT:   https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d
+
+NOTE: In production, we need to store secret in environment variable instead of a file.
+
+models->
+config -> database connections and urls.
+public -> files accessible by user. eg. stylesheets,js files.
+views
+This is where you have the files used by your templating engine. The generator will configure Express to look in here for a matching view when you call the render method.
+
+NB: Handlebars template engine looks for the views folder by default.
+partials -> contains the different parts of the template. eg. headers, footers.
+
+/////////////
+.use method in express: is executed each time its path is called.Since path defaults to “/”, middleware mounted without a path will be executed for every request to the app.
+For example, this middleware function will be executed for every request to the app:
+
+app.use(function (req, res, next) {
+  console.log('Time: %d', Date.now())
+  next()
+})
+
+/////////////
+
+NB: req always comes before res [req,res].
+
+
+TO RESTART APP: npm start 
+TO RESTART DB: close terminal and run script again.
+
+Routing-> This is how /home /blog and /about all give you different pages. Express makes it easy for you to modularize this code by allowing you to put different routes in different files.
+
+Middleware-> It accesses requests before your routes get them, allowing them to handle hard-to-do stuff like cookie parsing, file uploads, errors, auth and more.
+
+Views-> Views are how HTML pages are rendered with custom content. You pass in the data you want to be rendered and Express will render it with your given view engine.
+
+REFER: https://expressjs.com/en/api.html
+
+express.json([options]) -> This is a built-in middleware function in Express. It parses incoming requests with JSON payloads and is based on body-parser.
+
+express.static(root,[options]) -> This is a built-in middleware function in Express. It serves static files and is based on serve-static.
+The root argument specifies the root directory from which to serve static assets. The function determines the file to serve by combining req.url with the provided root directory. 
+
+
+__dirname is the most common method. It gives you the path of the currently running file.
+
+process.env.PORT -> In hosting servers  and as a convention, you can set the environment variable PORT to tell your web server what port to listen on.So process.env.PORT || 3000 means: whatever is in the environment variable PORT,
+
+next() variable in middlewares - is normally used at the end of middlewares that are general and you want the next middleware to still run after it.
+
+
+req.body: Contains key-value pairs of data submitted in the request body.
+
+find() method -> a mongoose method that returns everything in the collection.
+
+An HTTP GET request is what you get (pardon the pun) when you enter a URI in your browser or when you click on a link on a web page. Certain HTML elements, like <img> also generate GET requests. GET requests a resource (usually a web page or an image) from the server. 
+
+A POST request is similar to a GET request. The difference is that any additional information is sent in the body of the request, rather than as part of the URI. You can generate POST requests using <form method="post"> elements in HTML, where the form field values are sent in the request body.
+
+A HEAD request is also similar to a GET request, but the server responds only with the HTTP headers; the response body is empty.
+
+A PUT request is a way to upload a file to a server. Most servers don’t allow PUT requests, because of the security implications.
+
+Similarly, a DELETE request will delete a resource on the server. Like PUT, this method is rarely permitted on server for obvious reasons.
+
+The methodOverride() middleware is for requests from clients that only support simple verbs like GET and POST. So you can specify a special query field (or a hidden form field for example) that indicates the real verb to use instead of what was originally sent. That way your backend routes don't have to change and will still work and you can accept requests from all kinds of clients.
+
+//AZURE FOR DATABASES
+https://code.visualstudio.com/docs/azure/mongodb
+
+
+__v in a document of MongoDB: is the versionKey property set on each document when first created by Mongoose. Its value contains the internal revision of the document.
+
+.populate() method explained -> https://stackoverflow.com/questions/38051977/what-does-populate-in-mongoose-mean
+
+helper functions also know as custom functions.
+
+REGULAR EXPRESSIONS -> A regular expression is a sequence of characters that forms a search pattern. The search pattern can be used for text search and text replace operations.
+-https://www.w3schools.com/js/js_regexp.asp
+
+Example : var patt = /w3schools/i;
+/w3schools/i  is a regular expression.
+w3schools  is a pattern (to be used in a search), i  is a modifier (modifies the search to be case-insensitive).
+
+req.params
+This property is an object containing properties mapped to the named route “parameters”. For example, if you have the route /user/:name, then the “name” property is available as req.params.name. This object defaults to {}.
+
+express-upload -> package for file upload.
+
+FOR PROJECT INTELLISENSE --> npm install --save-dev @types/node
+
+PASSPORTJS - > used for user auth. ... could be local or google, facebook api login.
+
+
+JWT {json web tokens} is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+We can generate a JWT token in the backend that is specific to a user, pass this JWT token to the frontend, and then our frontend can send this token alongside requests to access protected API routes.
+
+NOTE: Don’t store it in local storage (or session storage). If any of the third-party scripts you include in your page gets compromised, it can access all your users’ tokens.
+The JWT needs to be stored inside an httpOnly cookie, 
+
+‘passport.serializeUser()’ intercepts the ‘request’ object before it is passed to the route handlers and looks for the user which matches the provided credentials in the dBase, it then appends that user’s unique ‘id’ from the dBase (‘_id’ in the case of MongoDB) to the request cookie before passing the modified request object to the route handler.
+
+TO START MONGO -> cd into mongo folder then mongodb/bin. then enter mongo.
+
+Path module -> a node core module used for joining different paths together.takes two parameters[path1,path2].
+
+NoSQL databases are all the rage these days, and probably the preferred back end for Node.js applications. But you shouldn’t architect your next project based on what’s hip and trendy. The type of database you use should depend on the project’s requirements. If your project involves dynamic table creation, real-time inserts etc. then NoSQL is the way to go. But on the other hand, if your project deals with complex queries and transactions, then an SQL database makes much more sense.

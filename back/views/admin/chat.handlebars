@@ -1,0 +1,65 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Real Time Chat</title>
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+        #messages { list-style-type: none; margin: 0; padding: 0; }
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; } 
+        
+        #messages{
+            height:300px;
+        }
+      </style>
+    </head>
+    <body> 
+      <ul id="messages"></ul>
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form> -->
+      
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-sm-12">
+                <h1 class="text-center">
+                    Messenger
+                    <button id="clear" class="btn btn-danger">clear</button>
+                </h1>
+                <div id="user" class="hidden">{{user}}</div>
+                <div id="theChatId" class="hidden">{{chatId}}</div>
+                <div id="status"></div>
+                <div id="chat">
+                    <input type="text" id="username" class="form-control" readonly value="{{reciever.email}}" placeholder="enter username...">
+                    <br>
+                    <div class="card">
+                        <div id="messages" style="height:300px;" class="card-block">
+
+                        </div>
+                    </div>
+                        <br>
+                        <textarea name="" id="textarea" class="form-control" placeholder="Enter message..."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{!--       <script src="/socket.io/socket.io.js"></script>
+      <script src="/js/jquery-1.8.3.min.js"></script>
+      <script>
+
+
+      
+      
+      </script>
+</body>
+</html> --}}

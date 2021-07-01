@@ -1,0 +1,24 @@
+<section class="wrapper">
+    <h1>Upload Image To Post</h1>
+        <div class="row p-4">
+            <div class="col-md-10">
+                <form action="/admin/imgupload" method="post" id="upload-img" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="post">Post to add Image:</label>
+                    <select name="post" id="post" class="form-control">
+                        {{#each posts}}
+                            <option value="{{_id}}">{{title}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+ 
+                <div class="form-group">
+                    <label for="file">File Upload: </label>
+                    <input type="file" class="form-control" id="file" name="uploadedFile">
+                </div>
+
+                <button class="btn btn-outline-success btn-lg upload-img" type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+</section>

@@ -1,0 +1,43 @@
+<section class="wrapper">
+    <h1>Edit Post</h1>
+        <div class="row p-4">
+            <div class="col-md-10">
+                <form action="" method="" id="update-post">
+                
+                <div class="form-group">
+                    <label for="title">title</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter Post Title" value="{{post.title}}">
+                </div>
+
+                <div class="form-group"><label for="status">Status</label>
+                    <select name="status" id="status" class="form-control">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                        <option value="draft">Draft</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="category_u">Category</label>
+                    <select name="category_u" id="category_u" class="form-control">
+                        {{#select post.category}}
+                            {{#each categories}}
+                                <option value="{{_id}}">{{title}}</option>
+                            {{/each}}
+                        {{/select}}
+                    </select>
+                </div>
+
+                <div class="form-check ml-3">
+                    <label for="allowcomments_u">
+                        <input type="checkbox" class="form-check-input" id="allowcomments_u" name="allowcomments_u">Allow Comments</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="description_u">Content</label>
+                        <textarea name="description_u" id="description_u" cols="30" rows="10" class="form-control" placeholder="Enter Your Content">{{post.description}}</textarea>
+                </div>
+
+                <button class="btn btn-outline-success btn-lg edit-post" id="{{post._id}}" type="submit">Edit Post</button>
+                </form>
+            </div>
+        </div>
+</section>

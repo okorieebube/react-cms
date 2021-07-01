@@ -1,0 +1,25 @@
+<div class="container" style="padding-top:40px;padding-left:10%;padding-right:10%;">
+    <div class="alert alert-secondary text-center">
+        <h1>All Friends</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="bg-dark text-center">
+            <tr class="text-white">
+                <th>#</th>
+                <th>Friends</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            {{#each users}}
+                <tr>
+                    <td> 1</td>
+                    <td><a href="/admin/chat/{{_id}}">{{firstName}}</a></td>
+                </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+
+</div>
